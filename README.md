@@ -2,13 +2,18 @@
 
 ### COMPATIBLE CON FEDORA, CENTOS, DEBIAN Y UBUNTU
 
+### DESCARGAR
+
+wget https://github.com/mvilche/virtualtoken-pkcs11/releases/download/v1.2/virtualtoken
+
+chmod +x ./virtualtoken
 
 
 ### INICIAR
 
 #### IMPORTANTE. NO INICIAR LA APLICACION CON USUARIO ROOT, EL SISTEMA SOLICITARÁ LAS CREDENCIALES CON SUDO CUANDO SEA NECESARIO.
 
-La apliucacion detecta de forma automatica si es el primer inicio e instala las dependencias necesarias.
+La aplicacion detecta de forma automatica si es el primer inicio e instala las dependencias necesarias.
 
 ./virtualtoken -start
 
