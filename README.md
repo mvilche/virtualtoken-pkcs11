@@ -1,0 +1,28 @@
+## VIRTUAL ETOKEN PKCS11 IMPLEMENTACION - TESTING Y DESARROLLO
+
+### COMPATIBLE CON FEDORA, CENTOS, DEBIAN Y UBUNTU
+
+### INICIAR
+
+La apliucacion detecta de forma automatica si el token no fue instalado.
+
+./virtualtoken -start
+
+### DETENER
+
+./virtualtoken -stop
+
+
+
+### INICIALIZAR TOKEN Y CERTTIFADOS AUTOFIRMADOS
+
+#### IMPORTANTE: ANTES DE INICIALIZAR EL TOKEN VERIFIQUE QUE EL USUARIO QUE EJECUTA EL VITUAL TOKEN SEA PARTE DEL GRUPO pkcs11
+
+
+./virtualtoken -init
+
+
+### DATOS DEL ETOKEN
+
+PIN 123456
+SLOT 3
