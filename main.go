@@ -41,6 +41,7 @@ func main() {
 	}
 
 	if !ready {
+		fmt.Print("--> SOFTWARE NO INSTALADO!\n")
 		fmt.Print("--> COMIENZA INSTALCION DEL SOFTWARE\n")
 		fmt.Print("--> EL PROGRAMA EJECUTARA COMANDOS CON SUDO PARA INSTALAR LAS DEPENDENCIAS NECESARIAS, INGRESE LA CONTRASENA CUANDO LO SOLICITE.\n")
 		err := InstallDependencies(command)
@@ -75,20 +76,22 @@ func main() {
 		fmt.Print("--> CONFIGURACION DE PERMISOS CORRECTA\n")
 		fmt.Print("--> REINICIE EL EQUIPO PARA QUE SU USUARIO PERTENEZCA AL GRUPO pkcs11 ANTES DE INICIALIZAR EL VIRTUAL TOKEN\n")
 
-	}
+	} else {
 
-	if fla.Start {
+		if fla.Start {
 
-		StartToken()
+			StartToken()
 
-	}
+		}
 
-	if fla.Stop {
-		StopToken()
-	}
+		if fla.Stop {
+			StopToken()
+		}
 
-	if fla.Init {
-		InitToken()
+		if fla.Init {
+			InitToken()
+		}
+
 	}
 
 }
@@ -293,7 +296,7 @@ func FixPermis() {
 	fmt.Print("--> " + user.Username)
 	fmt.Print("--> " + user.Name)
 	fmt.Print("--> " + user.Uid)
-	cmd := exec.Command("bash", "-c", "sudo chown -R "+user.Username+":pkcs11 "+path+"/softoken && newgrp pkcs11")
+	cmd := exec.Command("bash", "-c", "sudo chown -R "+user.Username+":pkcs11 "+path+"/softoken")
 
 	err22 := cmd.Run()
 	if err22 != nil {
