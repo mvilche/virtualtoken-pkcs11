@@ -66,34 +66,43 @@ $ ./virtualetoken -stop
 
 ## Acceder y listar etoken
 
+```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so -L --slot 3 --login --pin 123456
-
+```
 ## Ver certificados dentro del virtualtoken
 
+```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so -L --slot 3 --list-objects --type cert
-
+```
 ## Generar nuevo certificado e importarlo dentro del virtualetoken
 
 ### Generar clave privada y certificado
 
+```sh
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout private.key -out cert.pem -subj "/CN=testing"
-
+```
 ### Convertir certificado a DER
 
+```sh
 openssl x509 -inform pem -outform der -in cert.pem -out cert.der
-
+```
 ### Convertir clave privada a DER
 
+```sh
 openssl rsa -inform pem -outform der -in private.key -out key.der
-
+```
 ### Importar clave privada DER en virtualtoken
 
+```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so --slot 3 --login --pin 123456 --write-object key.der --type privkey --id 20 --label 'mi_cert'
-
+```
 ### Importar certificado DER en virtualtoken
 
+```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so --slot 3 --login --pin 123456 --write-object cert.der --type cert --id 20 --label 'mi_cert'
-
+```
 ### Verificar nuevo certificado
 
+```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so -L --slot 3 --list-objects --type cert
+```
