@@ -7,17 +7,20 @@ import (
 	"os"
 	"os/exec"
 	"os/user"
+	"strconv"
 	"strings"
 )
 
 func main() {
+
+	checkRoot()
 
 	AskSudo()
 
 	fmt.Print("***********************************************************************\n")
 	fmt.Print("DESC: VIRTUAL TOKEN - FIRMA DE DOCUMENTOS Y GESTION DE CERTIFICADOS\n")
 	fmt.Print("AUTOR: MARTIN FABRIZZIO VILCHE\n")
-	fmt.Print("VERSION: 1.1\n")
+	fmt.Print("VERSION: 1.2\n")
 	fmt.Print("***********************************************************************\n")
 
 	err := createLogFile()
@@ -139,22 +142,22 @@ func DetectSO() string {
 		//os.Exit(1)
 	}
 
-	if _, err := os.Stat("/bin/bash"); os.IsNotExist(err) {
-		fmt.Print("--> ERROR BASH NO ENCONTRADO EN /bin/bash.\n")
+	_, err1 := exec.LookPath("bash")
+	if err1 != nil {
+		fmt.Print("--> ERROR BASH NO ENCONTRADO EN PATH.\n")
 		os.Exit(1)
-
 	}
 
-	if _, err := os.Stat("/bin/sudo"); os.IsNotExist(err) {
-		fmt.Print("--> ERROR SUDO NO ENCONTRADO EN /bin/sudo.\n")
+	_, err2 := exec.LookPath("sudo")
+	if err2 != nil {
+		fmt.Print("--> ERROR SUDO NO ENCONTRADO EN PATH.\n")
 		os.Exit(1)
-
 	}
 
-	if _, err := os.Stat("/bin/pidof"); os.IsNotExist(err) {
-		fmt.Print("--> ERROR PIDOF NO ENCONTRADO EN /bin/pidof.\n")
+	_, err3 := exec.LookPath("pidof")
+	if err3 != nil {
+		fmt.Print("--> ERROR PIDOF NO ENCONTRADO EN PATH.\n")
 		os.Exit(1)
-
 	}
 
 	return plataform
@@ -483,5 +486,17 @@ func AskSudo() {
 	err22 := cmd22.Run()
 	if err22 != nil {
 		fmt.Println(err22)
+	}
+}
+
+func checkRoot() {
+
+	cmd := exec.Command("id", "-u")
+	output, _ := cmd.Output()
+	i, _ := strconv.Atoi(string(output[:len(output)-1]))
+
+	if i == 0 {
+		fmt.Print("--> ERROR - NO ESTA PERMITIDO INICIAR EL PROGRAMA CON EL USUARIO ROOT.\n")
+		os.Exit(1)
 	}
 }
