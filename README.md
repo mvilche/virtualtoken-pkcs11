@@ -8,7 +8,7 @@ Descargue la última versión estable.
 
 ```sh
 $ mkdir virtualtoken/ && cd virtualtoken/
-$ wget https://github.com/mvilche/virtualtoken-pkcs11/releases/download/v1.2/virtualtoken
+$ wget https://github.com/mvilche/virtualtoken-pkcs11/releases/download/v1.3/virtualtoken
 $ chmod +x virtualetoken
 ```
 
