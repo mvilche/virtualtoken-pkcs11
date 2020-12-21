@@ -8,7 +8,7 @@ import (
 )
 
 var InfoLog *log.Logger
-var ExecutionLog *log.Logger
+var ExecutionLog *log.
 var ErrorLog *log.Logger
 
 func createLogFile() error {

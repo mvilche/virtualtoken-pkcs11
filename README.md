@@ -105,4 +105,5 @@ pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so --slot
 
 ```sh
 pkcs11-tool --module PATH/TO/softoken/lib/opencryptoki/libopencryptoki.so -L --slot 3 --list-objects --type cert
+
 ```

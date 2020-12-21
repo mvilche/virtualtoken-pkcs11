@@ -20,7 +20,7 @@ func main() {
 	fmt.Print("***********************************************************************\n")
 	fmt.Print("DESC: VIRTUAL TOKEN - FIRMA DE DOCUMENTOS Y GESTION DE CERTIFICADOS\n")
 	fmt.Print("AUTOR: MARTIN FABRIZZIO VILCHE\n")
-	fmt.Print("VERSION: 1.2\n")
+	fmt.Print("VERSION: 1.3\n")
 	fmt.Print("***********************************************************************\n")
 
 	err := createLogFile()
