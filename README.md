@@ -27,7 +27,7 @@ si es el primer inicio el software realizará la instalación de las dependencia
 
 
 ```sh
-$ ./virtualetoken -start
+$ ./virtualtoken -start
 ```
 
 > Finalizada la instalación del virtualtoken 
