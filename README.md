@@ -43,8 +43,8 @@ El proceso de inicialización definira un etoken virtual en el slot 3 con un pin
 Adicionalmente creara un juego de llaves y certificados autofirmados que serán importados dentro del etoken.
 
 ```sh
-$ ./virtualetoken -start
-$ ./virtualetoken -init
+$ ./virtualtoken -start
+$ ./virtualtoken -init
 ```
 
 ## Detener
@@ -52,7 +52,7 @@ $ ./virtualetoken -init
 Detiene el virtualtoken
 
 ```sh
-$ ./virtualetoken -stop
+$ ./virtualtoken -stop
 ```
 
 # Datos del virtualtoken
